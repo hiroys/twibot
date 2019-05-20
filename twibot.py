@@ -31,12 +31,12 @@ def get_my_tweet():
         while len(tw_str.encode('utf-8')) > 132:
             tw_str = tw_str[:-1]
         tw = {
-            'tweet_word': tw_str + '(' + str(n_hour) + ')'
+            'tweet_word': tw_str.decode('utf-8') + '(' + str(n_hour) + ')'
         }
         tweets.append(tw)
 
-    tweet_word = random.choice(tweets)
-    return tweet_word
+    tweet = random.choice(tweets)
+    return tweet['tweet_word']
 
 def db_connect():
     pg_url = os.environ['pg_url']
