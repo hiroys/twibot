@@ -16,7 +16,8 @@ def api_post():
 
     if not request.headers['Content-Type'] == 'application/json':
         ret_data = {
-            'status': 'FAIL'
+            'status': 'FAIL',
+            'reason': 'Content-Type is invalid.'
         }
         return jsonify(ret_data)
     
@@ -28,7 +29,8 @@ def api_post():
         pass
     else:
         ret_data = {
-            'status': 'FAIL'
+            'status': 'FAIL',
+            'reason': 'Auth failed.'
         } 
         return jsonify(ret_data)
 
@@ -41,6 +43,7 @@ def api_post():
     except subprocess.CalledProcessError as e:
         logger.debug('Error: ' + str(e.output))
         ret_data = {
-            'status': 'FAIL'
+            'status': 'FAIL',
+            'reason': 'DB Error:' + str(e.output)
         }
         return jsonify(ret_data)
