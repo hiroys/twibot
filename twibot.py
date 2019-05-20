@@ -22,7 +22,7 @@ def get_my_tweet():
     conn = db_connect()
     sql = "SELECT tweet FROM tw_post WHERE display=True;"
     with conn.cursor() as cur:
-        cur.exectute(sql)
+        cur.execute(sql)
         result = cur.fetchall()
 
     tweets = []
