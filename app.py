@@ -9,6 +9,8 @@ logger = getLogger(__name__)
 app = Flask(__name__)
 app.config['JSON_AS_ASCII'] = False
 
+BASE = os.path.dirname(os.path.abspath(__file__))
+
 @app.route('/me/api/post', methods=['POST'])
 def api_post():
     me_id = os.environ['me_id']
@@ -35,7 +37,7 @@ def api_post():
         return jsonify(ret_data)
 
     try:
-        subprocess.check_call(['python3.6', './twibot.py'])
+        subprocess.check_call(['/usr/bin/python3.6', BASE + '/twibot.py'])
         ret_data = {
             'status': 'SUCCESS'
         }
