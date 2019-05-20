@@ -28,7 +28,7 @@ def get_my_tweet():
     tweets = []
     for row in result:
         tw_str = row[0]
-        while len(tw_str.encode('utf-8')) > 132:
+        while len(tw_str) > 130:
             tw_str = tw_str[:-1]
         tw = {
             'tweet_word': tw_str + '(' + str(n_hour) + ')'
